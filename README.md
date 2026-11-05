@@ -1,6 +1,8 @@
 # Brett's Hub
 
-Personal and work organizer. Installable on iPhone (Safari → Share → Add to Home Screen) and usable in any browser on a PC.
+## ▶ Open the app: **https://bretbert.github.io/brettshub/**
 
-- App code lives here; it holds no personal data.
-- Data syncs through Firebase and is readable only by the signed-in owner (see Firestore rules).
+- **iPhone:** open that link in Safari, tap Share, then Add to Home Screen. Open it from the new icon and sign in.
+- **PC:** open the link in any browser and bookmark it.
+
+This repository only stores the app's code. Your data is kept in Firebase, and only you can read it when you're signed in.
