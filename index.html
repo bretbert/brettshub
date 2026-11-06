@@ -396,6 +396,8 @@ select.in{ appearance:none; background-image:linear-gradient(45deg,transparent 5
 .tree-tile b{ font:600 13px/1.15 var(--f-display); letter-spacing:.02em; overflow-wrap:anywhere; }
 .tree-tile .tt-ct{ margin-top:auto; font:500 11.5px var(--f-mono); color:var(--muted); }
 .tree-tile .bar{ height:4px; }
+.tree-tile:last-child:nth-child(3n+1){ grid-column:1 / -1; min-height:0; display:grid; grid-template-columns:auto 1fr auto; align-items:center; column-gap:10px; }
+.tree-tile:last-child:nth-child(3n+1) .bar{ grid-column:1 / -1; }
 @media (min-width:640px){ .tree-grid{ gap:10px; } .tree-tile{ min-height:106px; padding:14px; } .tree-tile b{ font-size:15px; } }
 
 .tree{ position:relative; width:100%; margin-top:-4px; }
@@ -493,8 +495,8 @@ label.big{ cursor:pointer; }
 .banner.info{ border-color:var(--acc-line); background:var(--acc-soft); }
 .banner.info .ic{ color:var(--acc); }
 </style>
-<script src="config.js?v=202611051834"></script>
-<script type="module" src="app.js?v=202611051834"></script>
+<script src="config.js?v=202611051843"></script>
+<script type="module" src="app.js?v=202611051843"></script>
 </head>
 <body>
 <div class="app" id="app">
