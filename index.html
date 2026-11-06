@@ -422,6 +422,7 @@ select.in{ appearance:none; background-image:linear-gradient(45deg,transparent 5
 .node.s-earned{ --ring:var(--acc); --fill:var(--acc); --glyph:var(--on-acc); }
 .node.s-open{ --ring:var(--acc); --glyph:var(--acc); }
 .node.s-locked{ --ring:var(--line); --glyph:var(--faint); }
+.node.s-expired{ --ring:var(--warn); --fill:var(--panel); --glyph:var(--warn); }
 .node.s-locked .nlabel{ color:var(--muted); font-weight:500; }
 .node:hover .shape, .node:focus-visible .shape{ filter:brightness(1.15); }
 .rk{ display:flex; gap:3px; align-items:flex-end; height:16px; }
@@ -513,8 +514,8 @@ label.big{ cursor:pointer; }
 .banner.info{ border-color:var(--acc-line); background:var(--acc-soft); }
 .banner.info .ic{ color:var(--acc); }
 </style>
-<script src="config.js?v=202611061620"></script>
-<script type="module" src="app.js?v=202611061620"></script>
+<script src="config.js?v=202611061622"></script>
+<script type="module" src="app.js?v=202611061622"></script>
 </head>
 <body>
 <div class="app" id="app">
