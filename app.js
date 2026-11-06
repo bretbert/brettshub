@@ -185,11 +185,7 @@ function saveFile_(req) {
       ${E("go","wrench",a?"Upkeep & recerts":"Maintenance",f?`${f} due soon`:"Nothing due soon",'data-tab="upkeep"')}
       ${E("go","target","Projects",g?C(g,"open project"):"No open projects",'data-tab="projects"')}
       ${E("go","gift",a?"Gear wishlist":"Wishlist",_?C(_,"item"):"Nothing on it yet",'data-tab="wishes"')}
-      ${E("flow","play","Start my day","Leftovers, schedule, what is due",'data-k="day"')}
-      ${E("flow","reset","Weekly reset","Plan the next 7 days",'data-k="week"')}
-      ${E("flow","spark","Clear your head",b.ai?"Type it all out, Claude sorts it":"Type it all out as tasks",'data-k="dump"')}
       ${a?E("flow","cases","New case","Step-by-step case entry",'data-k="newcase"'):E("editHabits","habits","Edit habits",C(It().length,"habit"))}
-      ${E("flow","star","Add suggested items","Habits and upkeep picks",'data-k="setup"')}
       ${E("go","gear","Settings","Remove data, sync, account",'data-tab="settings"')}
       ${E("backup","download","Save a backup","Download everything as a file")}
       <label class="big" for="import-file"><span class="bi">${N("upload")}</span><b>Import a backup</b><span>Bring in a saved backup file</span></label>
