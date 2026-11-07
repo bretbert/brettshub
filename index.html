@@ -16,7 +16,7 @@
 <link rel="icon" type="image/png" href="icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
 /* Layout: a console-style app shell. Sticky top bar holds the Personal/Work switch; one working view at a time;
    bottom bar on phones, left rail on desktop; guided flows take over the full screen one step at a time. Dark-first. */
@@ -498,6 +498,100 @@ select.in{ appearance:none; background-image:linear-gradient(45deg,transparent 5
 details summary{ cursor:pointer; }
 .in.mono{ font:13px/1.4 var(--f-mono); margin-top:8px; }
 .row .hi{ display:grid; place-items:center; }
+/* ================= skins ================= */
+/* Professional: quiet, light, square-ish. Follows the phone's dark mode. */
+:root[data-skin="pro"]{
+  color-scheme: light;
+  --bg:#f4f5f7; --dots:transparent;
+  --panel:#ffffff; --panel-2:#f7f8fa; --raise:#e8ebef;
+  --line:#dde1e6; --line-2:#c3c9d1;
+  --text:#1c2530; --muted:#5a6573; --faint:#8a94a1;
+  --cyan:#2459a8; --amber:#1f6b58;
+  --ok:#1d7a46; --warn:#b4581b; --danger:#b83232;
+  --on-acc:#ffffff; --scrim:rgba(20,28,38,.36);
+  --shadow:0 14px 34px rgba(20,30,45,.14);
+  --f-display:"IBM Plex Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root[data-skin="pro"]:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#14181d; --panel:#1b2027; --panel-2:#20262e; --raise:#2a313a;
+    --line:#2d343d; --line-2:#3f4852;
+    --text:#e7eaee; --muted:#a0a9b4; --faint:#6f7883;
+    --cyan:#6f9fe8; --amber:#4fb497;
+    --ok:#56c98a; --warn:#e69456; --danger:#ec6f6f;
+    --on-acc:#0e1217; --scrim:rgba(0,0,0,.55); --shadow:0 18px 40px rgba(0,0,0,.45);
+  }
+}
+[data-skin="pro"] body{ background-image:none; }
+[data-skin="pro"] :is(h1,h2,h3){ letter-spacing:0; }
+[data-skin="pro"] h1{ font-size:24px; }
+[data-skin="pro"] :is(.btn,.chip,.seg button,.switch button,.nav button,.tag,.brand-name,.tree-tile b,.char-row,.toggle,.focus-bar b){ letter-spacing:0; }
+[data-skin="pro"] :is(.btn.primary,.fab,.hero-icon,.done-mark,.char-lvl){ clip-path:none; }
+[data-skin="pro"] .btn.primary{ border-radius:7px; }
+[data-skin="pro"] .fab{ border-radius:18px; box-shadow:var(--shadow); }
+[data-skin="pro"] :is(.hero-icon,.char-lvl){ border-radius:12px; }
+[data-skin="pro"] .done-mark{ border-radius:50%; }
+[data-skin="pro"] .tile::after{ display:none; }
+[data-skin="pro"] .nav button[aria-current="page"]::before{ left:34%; right:34%; border-radius:0 0 3px 3px; }
+[data-skin="pro"] :is(.panel,.card,.row,.tile,.big,.tree-tile,.char,.hero,.habit,.kvs){ box-shadow:0 1px 2px rgba(20,30,45,.05); }
+
+/* Tactical: black and yellow field HUD. Always dark. */
+:root[data-skin="tactical"]{
+  color-scheme: dark;
+  --bg:#0a0b0b; --dots:transparent;
+  --panel:#131515; --panel-2:#191c1c; --raise:#252929;
+  --line:#2b3030; --line-2:#474e4e;
+  --text:#ece9df; --muted:#a19f95; --faint:#6c6b64;
+  --cyan:#ffe01b; --amber:#ff9416;
+  --ok:#86d96b; --warn:#ff9416; --danger:#ff4f3f;
+  --on-acc:#0a0b0b; --scrim:rgba(0,0,0,.7); --shadow:0 18px 40px rgba(0,0,0,.6);
+  --f-display:"Barlow Condensed","Bahnschrift Condensed","Arial Narrow",system-ui,sans-serif;
+}
+[data-skin="tactical"] body{ background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.022) 0 1px,transparent 1px 4px); background-size:auto; }
+[data-skin="tactical"] :is(h1,h2,h3,.btn,.chip,.seg button,.switch button,.nav button,.tag,.brand-name,.tree-tile b,.card-title,.hero-title,.toggle,.focus-bar b,.eyebrow,.day-label,.panel-head h2){ text-transform:uppercase; letter-spacing:.06em; }
+[data-skin="tactical"] h1{ font-size:31px; font-weight:700; letter-spacing:.05em; }
+[data-skin="tactical"] h2{ font-size:20px; font-weight:700; }
+[data-skin="tactical"] :is(.btn,.chip,.seg button,.switch button){ font-weight:700; font-size:15.5px; }
+[data-skin="tactical"] .nav button{ font-size:12px; font-weight:700; }
+[data-skin="tactical"] .tag{ font-size:13px; font-weight:700; }
+[data-skin="tactical"] :is(.btn,.chip,.row,.panel,.card,.tile,.tree-tile,.big,.seg,.seg button,.switch,.switch button,.in,.tag,.sheet,.kvs,.hero,.char,.habit,.day,.empty,.toggle,.file-pick,.banner,.icon-btn,.focus-bar,.step-card,.nav button,.big .bi,.habit .hi,.hbtn){ border-radius:0; }
+[data-skin="tactical"] .bar, [data-skin="tactical"] .bar > i{ border-radius:0; }
+[data-skin="tactical"] .bar > i{ background:repeating-linear-gradient(90deg,var(--acc) 0 6px,color-mix(in srgb,var(--acc) 70%,transparent) 6px 8px); }
+[data-skin="tactical"] .top{ border-bottom:0; background:color-mix(in srgb,var(--bg) 94%,transparent); }
+[data-skin="tactical"] .top::after{ content:""; position:absolute; left:0; right:0; bottom:-4px; height:4px; background:repeating-linear-gradient(-45deg,var(--acc) 0 7px,#0a0b0b 7px 14px); }
+[data-skin="tactical"] .nav{ border-top:2px solid var(--acc); }
+[data-skin="tactical"] .nav button[aria-current="page"]{ background:color-mix(in srgb,var(--acc) 12%,transparent); }
+[data-skin="tactical"] .nav button[aria-current="page"]::before{ left:0; right:0; height:3px; }
+[data-skin="tactical"] .panel-head h2::before{ content:""; display:inline-block; width:9px; height:9px; margin-right:9px; background:var(--acc); vertical-align:2px; }
+[data-skin="tactical"] :is(.panel,.card,.big,.tree-tile,.char,.hero,.step-card,.kvs){
+  background:
+    linear-gradient(var(--acc),var(--acc)) left top/12px 2px no-repeat,
+    linear-gradient(var(--acc),var(--acc)) left top/2px 12px no-repeat,
+    linear-gradient(var(--acc),var(--acc)) right bottom/12px 2px no-repeat,
+    linear-gradient(var(--acc),var(--acc)) right bottom/2px 12px no-repeat,
+    var(--panel);
+}
+[data-skin="tactical"] .btn.primary{ clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px)); }
+[data-skin="tactical"] .fab{ clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px)); }
+[data-skin="tactical"] .btn:not(.primary):hover, [data-skin="tactical"] .chip:hover{ border-color:var(--acc); }
+[data-skin="tactical"] .chip[aria-pressed="true"]{ background:var(--acc); color:var(--on-acc); border-color:var(--acc); }
+[data-skin="tactical"] .tile::after{ background:repeating-linear-gradient(-45deg,var(--acc) 0 3px,transparent 3px 6px); clip-path:polygon(0 0,100% 0,100% 100%); }
+[data-skin="tactical"] .sheet{ border-top:3px solid var(--acc); }
+[data-skin="tactical"] .eyebrow, [data-skin="tactical"] .tt-ct, [data-skin="tactical"] .xp{ color:var(--acc); }
+[data-skin="tactical"] .node .nlabel{ text-transform:uppercase; letter-spacing:.01em; font-size:11.5px; font-weight:700; line-height:1.1; }
+[data-skin="pro"] .node .nlabel{ font-size:10.5px; font-weight:600; letter-spacing:-.01em; }
+
+/* skin picker in Settings */
+.skin-row{ display:flex; flex-direction:column; gap:8px; }
+.skin-opts{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; }
+.skin-opt{ display:flex; flex-direction:column; gap:6px; padding:8px; border:1px solid var(--line-2); border-radius:9px; background:var(--panel-2); text-align:left; }
+.skin-opt[aria-pressed="true"]{ border-color:var(--acc); box-shadow:inset 0 0 0 1px var(--acc); }
+.skin-opt b{ font:600 13.5px var(--f-display); }
+.skin-opt small{ font-size:11.5px; color:var(--muted); line-height:1.25; }
+.sw{ display:block; height:34px; border-radius:5px; position:relative; overflow:hidden; }
+.sw i{ position:absolute; left:8px; bottom:7px; width:26px; height:8px; }
+.sw u{ position:absolute; right:8px; top:8px; width:14px; height:14px; }
 @media (prefers-reduced-motion: reduce){ *{ animation:none!important; transition:none!important; } }
 
 [hidden]{ display:none!important; }
@@ -514,8 +608,8 @@ label.big{ cursor:pointer; }
 .banner.info{ border-color:var(--acc-line); background:var(--acc-soft); }
 .banner.info .ic{ color:var(--acc); }
 </style>
-<script src="config.js?v=202611061627"></script>
-<script type="module" src="app.js?v=202611061627"></script>
+<script src="config.js?v=202611062032"></script>
+<script type="module" src="app.js?v=202611062032"></script>
 </head>
 <body>
 <div class="app" id="app">
