@@ -136,7 +136,7 @@ p{ margin:0; }
 .nav button .ic{ width:22px; height:22px; }
 .nav button[aria-current="page"]{ color:var(--acc); }
 .nav button[aria-current="page"]::before{ content:""; position:absolute; top:0; left:28%; right:28%; height:3px; background:var(--acc); }
-.nav .rail-brand{ display:none; }
+.nav .rail-brand, .nav .rail-only, .nav .rail-foot{ display:none; }
 
 .fab{
   position:fixed; z-index:36;
@@ -156,6 +156,9 @@ p{ margin:0; }
     border-top:0; border-right:1px solid var(--line);
   }
   .nav .rail-brand{ display:flex; align-items:center; gap:10px; padding:4px 8px 18px; }
+  .nav .rail-only{ display:flex; }
+  .nav .nav-more{ display:none; }
+  .nav .rail-foot{ display:flex; flex-direction:column; gap:4px; margin-top:auto; padding-top:12px; border-top:1px solid var(--line); }
   .nav button{ flex-direction:row; justify-content:flex-start; gap:12px; height:46px; padding:0 12px; border-radius:7px; font-size:14.5px; }
   .nav button[aria-current="page"]{ background:var(--acc-soft); }
   .nav button[aria-current="page"]::before{ top:10px; bottom:10px; left:0; right:auto; width:3px; height:auto; }
@@ -304,6 +307,33 @@ select.in{ appearance:none; background-image:linear-gradient(45deg,transparent 5
 .dots i.t{ background:var(--muted); } .dots i.c{ background:var(--danger); }
 .day[aria-pressed="true"] .dots i{ background:var(--on-acc); }
 @media (min-width:640px){ .day{ height:64px; } }
+.cal-key{ display:flex; gap:12px; font-size:13px; color:var(--muted); }
+.cal-key span{ display:inline-flex; align-items:center; gap:6px; }
+.cal-key i{ width:10px; height:10px; border-radius:3px; background:var(--cyan); } .cal-key i.work{ background:var(--amber); }
+.cal-wrap{ display:flex; flex-direction:column; gap:18px; }
+.cal-main{ display:flex; flex-direction:column; gap:10px; }
+.cal{ gap:3px; }
+.cal .day{ height:auto; min-height:86px; align-items:stretch; justify-content:flex-start; gap:3px; padding:5px 2px 4px; overflow:hidden; min-width:0; }
+.cal .dn{ text-align:center; font:600 13px/1.2 var(--f-display); }
+.di{ --sc:var(--cyan); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; overflow-wrap:break-word; -webkit-hyphens:auto; hyphens:auto; min-width:0;
+  padding:1px 3px; border-radius:3px; border-left:2px solid var(--sc); background:color-mix(in srgb,var(--sc) 22%,var(--panel)); color:var(--text); font:500 10px/1.25 var(--f-body); text-align:left; letter-spacing:0; }
+.di.work{ --sc:var(--amber); } .di.k-c{ --sc:var(--danger); }
+.di.k-t{ background:color-mix(in srgb,var(--sc) 8%,var(--panel)); border-left-style:dashed; }
+.di b{ font-weight:700; }
+.dmore{ font:600 10px/1.2 var(--f-body); color:var(--muted); text-align:left; padding-left:3px; }
+.day[aria-pressed="true"] .dmore{ color:inherit; }
+.day.out .di{ opacity:.6; }
+@media (min-width:900px){
+  .cal{ gap:6px; }
+  .cal .day{ min-height:118px; padding:7px 6px 6px; gap:4px; }
+  .cal .dn{ text-align:left; padding-left:2px; font-size:14px; }
+  .di{ display:block; white-space:nowrap; text-overflow:ellipsis; font-size:12px; padding:2px 6px; }
+  .dmore{ font-size:11.5px; padding-left:6px; }
+}
+@media (min-width:1200px){
+  .cal-wrap{ display:grid; grid-template-columns:minmax(0,1fr) 340px; align-items:start; gap:24px; }
+  .cal-side{ position:sticky; top:84px; }
+}
 
 /* ---------- habits */
 .habit-grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
@@ -611,7 +641,7 @@ details summary{ cursor:pointer; }
 [data-skin="pro"] .check{ border-width:1.5px; }
 [data-skin="pro"] .toggle[aria-pressed="true"]{ border-radius:12px 12px 0 0; background:var(--panel); }
 [data-skin="pro"] .reveal{ border-radius:0 0 12px 12px; border-color:transparent; }
-/* Start my day reads like a recap card: accent icon and title, no filled tile */
+/* hero cards read like a recap card: accent icon and title, no filled tile */
 [data-skin="pro"] .hero{ padding:16px; }
 [data-skin="pro"] .hero-icon{ width:38px; height:38px; border-radius:10px; background:color-mix(in srgb,var(--acc) 14%,transparent); color:var(--acc); }
 [data-skin="pro"] .hero-title{ color:var(--acc); font-weight:600; }
@@ -1129,8 +1159,8 @@ label.big{ cursor:pointer; }
 .banner.info{ border-color:var(--acc-line); background:var(--acc-soft); }
 .banner.info .ic{ color:var(--acc); }
 </style>
-<script src="config.js?v=202611062137"></script>
-<script type="module" src="app.js?v=202611062137"></script>
+<script src="config.js?v=202611062143"></script>
+<script type="module" src="app.js?v=202611062143"></script>
 </head>
 <body>
 <div class="app" id="app">
