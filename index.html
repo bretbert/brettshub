@@ -1190,6 +1190,21 @@ details summary{ cursor:pointer; }
 .skmap .skmap-world .node.map-origin .nlabel{ font-size:15px; font-weight:700; max-width:150px; }
 .skmap.far .skmap-world .node.map-origin .nlabel{ visibility:visible; transform:scale(min(var(--inv,1),3)); transform-origin:top center; }
 .skmap .skmap-world line.spoke{ stroke:var(--line-2); stroke-dasharray:none; stroke-width:3; opacity:.55; }
+/* hubs: the first stop on each path; region tags name each path when zoomed out */
+.skmap .skmap-world .node.hub .shape{ width:68px; height:64px; }
+.skmap .skmap-world .node.hub .shape .ic{ width:26px; height:26px; }
+.skmap .skmap-world .node.hub .nlabel{ font-weight:700; font-size:13.5px; }
+.map-region{ position:absolute; z-index:4; transform:translate(-50%,-50%) scale(var(--inv,1)); font:700 21px/1.1 var(--f-display); white-space:nowrap; color:var(--text);
+  background:color-mix(in srgb,var(--panel) 86%,transparent); border:1px solid var(--line-2); border-radius:999px; padding:6px 14px; box-shadow:var(--shadow);
+  opacity:0; pointer-events:none; transition:opacity .2s; cursor:pointer; }
+.skmap.far .map-region{ opacity:1; pointer-events:auto; }
+.skmap.far .map-region.dim{ opacity:.25; }
+.skmap.far .map-region.hide{ opacity:0; pointer-events:none; }
+.skmap.far .skmap-world .node.hub .nlabel{ visibility:hidden; }
+.skmap.far.mid .skmap-world .node.br.show .nlabel{ visibility:visible; transform:scale(calc(var(--inv,1) * 1.45)); transform-origin:top center; font-weight:600; color:var(--text);
+  background:color-mix(in srgb,var(--bg) 78%,transparent); border-radius:6px; padding:1px 5px; }
+.skmap.far.mid .skmap-world .node.br.show{ z-index:2; }
+.skmap .node.map-origin{ z-index:3; }
 .map-card{ background:color-mix(in srgb,var(--panel) 92%,transparent); border:1px solid var(--line); border-radius:12px; box-shadow:var(--shadow); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); }
 .map-tl{ position:absolute; left:10px; top:10px; z-index:3; display:flex; flex-direction:column; gap:8px; width:min(330px,calc(100% - 70px)); }
 .map-hud{ display:flex; gap:10px; align-items:center; padding:8px 10px; }
@@ -1213,7 +1228,10 @@ details summary{ cursor:pointer; }
 .map-wt .list{ overflow-y:auto; padding:0 8px 8px; gap:6px; overscroll-behavior:contain; }
 .map-wt .hint{ padding:0 12px 12px; }
 .map-wt .goal-row{ min-height:0; padding:8px 10px; }
-.map-focus .focus-bar{ border:0; background:transparent; }
+.map-focus .focus-bar{ border:0; background:transparent; flex-wrap:wrap; row-gap:8px; }
+.map-focus .focus-bar .grow{ flex:1 1 170px; }
+.map-focus .focus-bar .hint{ display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.map-focus .fb-btns{ margin-left:auto; }
 @media (max-width:899px){ .map-bl{ width:calc(100% - 90px); } }
 
 /* wide screens: use the room */
@@ -1246,8 +1264,8 @@ label.big{ cursor:pointer; }
 .banner.info{ border-color:var(--acc-line); background:var(--acc-soft); }
 .banner.info .ic{ color:var(--acc); }
 </style>
-<script src="config.js?v=202611062222"></script>
-<script type="module" src="app.js?v=202611062222"></script>
+<script src="config.js?v=202611062244"></script>
+<script type="module" src="app.js?v=202611062244"></script>
 </head>
 <body>
 <div class="app" id="app">
