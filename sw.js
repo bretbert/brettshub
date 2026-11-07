@@ -1,6 +1,6 @@
 // Brett's Hub service worker: keeps the app itself available offline. Your data syncs through Firebase.
-const V = 'hub-202611062244';
-const SHELL = ['./', './index.html', './app.js?v=202611062244', './config.js?v=202611062244', './manifest.webmanifest', './icons/icon-192.png', './icons/apple-touch-icon.png', './icons/favicon.svg', './icons/favicon-32.png'];
+const V = 'hub-202611062247';
+const SHELL = ['./', './index.html', './app.js?v=202611062247', './config.js?v=202611062247', './manifest.webmanifest', './icons/icon-192.png', './icons/apple-touch-icon.png', './icons/favicon.svg', './icons/favicon-32.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(V).then(c => c.addAll(SHELL)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== V).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
 self.addEventListener('fetch', e => {
