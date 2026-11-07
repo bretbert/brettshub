@@ -1168,7 +1168,7 @@ details summary{ cursor:pointer; }
 .skmap .skmap-world .node .shape .ic{ width:22px; height:22px; }
 .skmap .skmap-world .node.t-goal .ic{ width:16px; height:16px; }
 .skmap .skmap-world .node .nlabel{ font-size:12.5px; max-width:126px; }
-.skmap.far .skmap-world .node .nlabel, .skmap.far .map-jobs span{ visibility:hidden; }
+.skmap.far .map-jobs span{ visibility:hidden; }
 .map-root{ position:absolute; z-index:2; transform:translate(-50%,-50%) scale(min(var(--inv,1),4)); width:96px; height:96px; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center;
   background:var(--acc); color:var(--on-acc); box-shadow:0 0 0 10px var(--acc-soft),var(--shadow); }
 .map-root b{ font-size:36px; line-height:1; } .map-root span{ font:600 12px var(--f-display); text-transform:uppercase; letter-spacing:.08em; opacity:.8; }
@@ -1188,7 +1188,6 @@ details summary{ cursor:pointer; }
 .skmap .skmap-world .node.map-origin .shape{ width:84px; height:76px; }
 .skmap .skmap-world .node.map-origin .shape .ic{ width:32px; height:32px; }
 .skmap .skmap-world .node.map-origin .nlabel{ font-size:15px; font-weight:700; max-width:150px; }
-.skmap.far .skmap-world .node.map-origin .nlabel{ visibility:visible; transform:scale(min(var(--inv,1),3)); transform-origin:top center; }
 .skmap .skmap-world line.spoke{ stroke:var(--line-2); stroke-dasharray:none; stroke-width:3; opacity:.55; }
 /* hubs: the first stop on each path; region tags name each path when zoomed out */
 .skmap .skmap-world .node.hub .shape{ width:68px; height:64px; }
@@ -1197,13 +1196,17 @@ details summary{ cursor:pointer; }
 .map-region{ position:absolute; z-index:4; transform:translate(-50%,-50%) scale(var(--inv,1)); font:700 21px/1.1 var(--f-display); white-space:nowrap; color:var(--text);
   background:color-mix(in srgb,var(--panel) 86%,transparent); border:1px solid var(--line-2); border-radius:999px; padding:6px 14px; box-shadow:var(--shadow);
   opacity:0; pointer-events:none; transition:opacity .2s; cursor:pointer; }
-.skmap.far .map-region{ opacity:1; pointer-events:auto; }
-.skmap.far .map-region.dim{ opacity:.25; }
-.skmap.far .map-region.hide{ opacity:0; pointer-events:none; }
-.skmap.far .skmap-world .node.hub .nlabel{ visibility:hidden; }
-.skmap.far.mid .skmap-world .node.br.show .nlabel{ visibility:visible; transform:scale(calc(var(--inv,1) * 1.45)); transform-origin:top center; font-weight:600; color:var(--text);
-  background:color-mix(in srgb,var(--bg) 78%,transparent); border-radius:6px; padding:1px 5px; }
-.skmap.far.mid .skmap-world .node.br.show{ z-index:2; }
+.map-region.on{ opacity:1; pointer-events:auto; }
+.map-region.on.dim{ opacity:.25; }
+/* labels keep a readable size as you zoom out; the less important ones drop out first (set by MapUI.tags) */
+.skmap .skmap-world .node .nlabel{ position:relative; z-index:1; transform-origin:top center; }
+.skmap .skmap-world .node.map-origin .nlabel{ transform:scale(var(--k0,1)); }
+.skmap .skmap-world .node.lv1 .nlabel{ transform:scale(var(--k1,1)); }
+.skmap .skmap-world .node.lv2 .nlabel{ transform:scale(var(--k2,1)); font-weight:700; }
+.skmap .skmap-world .node.lv3 .nlabel{ transform:scale(var(--k3,1)); }
+.skmap .skmap-world .node.lv4 .nlabel{ transform:scale(var(--k4,1)); }
+.skmap .skmap-world .node.off .nlabel{ visibility:hidden; }
+.skmap .skmap-world.measure .node .nlabel{ transform:none !important; }
 .skmap .node.map-origin{ z-index:3; }
 .map-card{ background:color-mix(in srgb,var(--panel) 92%,transparent); border:1px solid var(--line); border-radius:12px; box-shadow:var(--shadow); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); }
 .map-tl{ position:absolute; left:10px; top:10px; z-index:3; display:flex; flex-direction:column; gap:8px; width:min(330px,calc(100% - 70px)); }
@@ -1264,8 +1267,8 @@ label.big{ cursor:pointer; }
 .banner.info{ border-color:var(--acc-line); background:var(--acc-soft); }
 .banner.info .ic{ color:var(--acc); }
 </style>
-<script src="config.js?v=202611062247"></script>
-<script type="module" src="app.js?v=202611062247"></script>
+<script src="config.js?v=202611062252"></script>
+<script type="module" src="app.js?v=202611062252"></script>
 </head>
 <body>
 <div class="app" id="app">
